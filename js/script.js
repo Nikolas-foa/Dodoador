@@ -1,4 +1,3 @@
-
 // Retira tudo que não for número.
 function soNumeros(valor) {
   return valor.replace(/\D/g, "");
@@ -8,15 +7,9 @@ document.getElementById("telefone")?.addEventListener("input", function () {
   let n = soNumeros(this.value).slice(0, 11);
 
   if (n.length > 10) {
-    this.value = n.replace(
-      /(\d{2})(\d{5})(\d{0,4})/,
-      "($1) $2-$3"
-    );
+    this.value = n.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
   } else {
-    this.value = n.replace(
-      /(\d{2})(\d{4})(\d{0,4})/,
-      "($1) $2-$3"
-    );
+    this.value = n.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
   }
 });
 
@@ -29,7 +22,6 @@ document.getElementById("cpf")?.addEventListener("input", function () {
 
   this.value = n;
 });
-
 
 // Máscara da data de nascimento.
 document.getElementById("nascimento")?.addEventListener("input", function () {
@@ -45,7 +37,6 @@ document.getElementById("nascimento")?.addEventListener("input", function () {
 document
   .getElementById("formCadastro")
   ?.addEventListener("submit", function (evento) {
-
     evento.preventDefault();
 
     let nome = document.getElementById("nome");
@@ -60,26 +51,21 @@ document
 
     document
       .querySelectorAll(".erro")
-      .forEach(item => item.textContent = "");
+      .forEach((item) => (item.textContent = ""));
 
     document
       .querySelectorAll(".campo input")
-      .forEach(item => item.classList.remove("invalido"));
+      .forEach((item) => item.classList.remove("invalido"));
 
-    const regraNome =
-      /^[A-Za-zÀ-ÿ]+(?:[ '-][A-Za-zÀ-ÿ]+)+$/;
+    const regraNome = /^[A-Za-zÀ-ÿ]+(?:[ '-][A-Za-zÀ-ÿ]+)+$/;
 
-    const regraEmail =
-      /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+    const regraEmail = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
 
-    const regraTelefone =
-      /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+    const regraTelefone = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
 
-    const regraCpf =
-      /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    const regraCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
 
-    const regraData =
-      /^\d{2}\/\d{2}\/\d{4}$/;
+    const regraData = /^\d{2}\/\d{2}\/\d{4}$/;
 
     if (!regraNome.test(nome.value.trim())) {
       document.getElementById("erroNome").textContent =
@@ -109,9 +95,7 @@ document
       valido = false;
     }
 
-    if (!regraData.test(nascimento.value) ||
-        !dataValida(nascimento.value)) {
-
+    if (!regraData.test(nascimento.value) || !dataValida(nascimento.value)) {
       document.getElementById("erroNascimento").textContent =
         "Digite uma data válida.";
 
@@ -134,14 +118,12 @@ document
       this.reset();
     } else {
       resultado.style.color = "#b00020";
-      resultado.textContent =
-        "Confira os campos destacados.";
+      resultado.textContent = "Confira os campos destacados.";
     }
-});
+  });
 
 // Confere se a data existe e não está no futuro.
 function dataValida(valor) {
-
   const partes = valor.split("/");
 
   const dia = Number(partes[0]);
