@@ -3,6 +3,7 @@ function soNumeros(valor) {
   return valor.replace(/\D/g, "");
 }
 
+// Máscara do telefone.
 document.getElementById("telefone")?.addEventListener("input", function () {
   let n = soNumeros(this.value).slice(0, 11);
 
@@ -13,6 +14,7 @@ document.getElementById("telefone")?.addEventListener("input", function () {
   }
 });
 
+// Máscara do CPF.
 document.getElementById("cpf")?.addEventListener("input", function () {
   let n = soNumeros(this.value).slice(0, 11);
 
@@ -33,7 +35,7 @@ document.getElementById("nascimento")?.addEventListener("input", function () {
   this.value = n;
 });
 
-// Validação do formulário usando expressões regulares.
+// Validação do formulário.
 document
   .getElementById("formCadastro")
   ?.addEventListener("submit", function (evento) {
@@ -112,12 +114,14 @@ document
 
     if (valido) {
       resultado.style.color = "green";
+
       resultado.textContent =
         "Cadastro validado com sucesso! Nenhum dado foi enviado.";
 
       this.reset();
     } else {
       resultado.style.color = "#b00020";
+
       resultado.textContent = "Confira os campos destacados.";
     }
   });
